@@ -1,0 +1,7 @@
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} /opt/px_arm/)
+include_directories(/opt/px_arm/include/)
+link_directories(/opt/px_arm/lib/)
+find_package(Eigen3 REQUIRED)
+#add_compile_definitions(EIGEN_STACK_ALLOCATION_LIMIT=0)
+include_directories(${EIGEN3_INCLUDE_DIR})
+add_executable(eigen_demo main.cpp)

@@ -1,0 +1,3 @@
+/home/yangms/sec/yms/demo/preprocess_macro_demo/build/CMakeFiles/rebuild_cache.dir
+/home/yangms/sec/yms/demo/preprocess_macro_demo/build/CMakeFiles/preprocess_marco_demo.dir
+/home/yangms/sec/yms/demo/preprocess_macro_demo/build/CMakeFiles/edit_cache.dir

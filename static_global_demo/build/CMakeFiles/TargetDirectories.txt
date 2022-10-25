@@ -1,0 +1,4 @@
+/home/yangms/sec/yms/demo/static_global_demo/build/CMakeFiles/rebuild_cache.dir
+/home/yangms/sec/yms/demo/static_global_demo/build/CMakeFiles/node_handle.dir
+/home/yangms/sec/yms/demo/static_global_demo/build/CMakeFiles/edit_cache.dir
+/home/yangms/sec/yms/demo/static_global_demo/build/CMakeFiles/main.dir

@@ -1,0 +1,8 @@
+if (Test)
+  add_definitions(-DTest)
+endif(Test)
+file(GLOB source_file main.cpp)
+message("xxx"${source_file})
+file(GLOB source_file a.cpp)
+message("xxx"${source_file})
+add_executable(preprocess_marco_demo main.cpp)
