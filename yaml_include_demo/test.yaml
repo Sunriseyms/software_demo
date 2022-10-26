@@ -1,0 +1,7 @@
+ModuleA:
+  key1: val1
+  key2: val2
+ModeleB:
+  key1: val1
+  key2: val2
+include: ["/home/yangms/ws/github/software_demo/yaml_include_demo/11.yml"]

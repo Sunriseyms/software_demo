@@ -30,7 +30,7 @@ add_subdirectory(thread_local_demo)
 
 #add_subdirectory(template_demo)
 
-add_subdirectory(google_benchmark_demo)
+#add_subdirectory(google_benchmark_demo)
 
 add_subdirectory(static_global_demo)
 
@@ -45,6 +45,7 @@ add_subdirectory(inline_demo)
 add_subdirectory(eigen_demo)
 
 add_subdirectory(lcm_demo)
+add_subdirectory(yaml_include_demo)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
