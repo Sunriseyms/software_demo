@@ -1,0 +1,1 @@
+add_executable(stl_iterator_adaptor_demo main.cpp)

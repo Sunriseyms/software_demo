@@ -47,6 +47,12 @@ add_subdirectory(eigen_demo)
 add_subdirectory(lcm_demo)
 add_subdirectory(yaml_include_demo)
 
+add_subdirectory(cmake_add_custom_command_demo)
+
+add_subdirectory(stl_vector_demo)
+add_subdirectory(stl_iterator_adaptor_demo)
+add_subdirectory(dynamic_load)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

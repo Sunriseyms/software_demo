@@ -1,0 +1,7 @@
+add_library(common STATIC common.cpp)
+add_library(a SHARED a.cpp)
+target_link_libraries(a common)
+#add_library(b SHARED b.cpp)
+#target_link_libraries(b common)
+#add_executable(dynamic_load main.cpp)
+#target_link_libraries(dynamic_load dl)
