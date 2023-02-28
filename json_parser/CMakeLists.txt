@@ -1,0 +1,2 @@
+add_executable(json_parse_demo main.cpp)
+target_link_libraries(json_parse_demo jsoncpp)

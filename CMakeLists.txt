@@ -32,7 +32,7 @@ add_subdirectory(thread_local_demo)
 
 #add_subdirectory(google_benchmark_demo)
 
-add_subdirectory(static_global_demo)
+#add_subdirectory(static_global_demo)
 
 add_subdirectory(weak_symbol)
 
@@ -44,7 +44,7 @@ add_subdirectory(inline_demo)
 
 add_subdirectory(eigen_demo)
 
-add_subdirectory(lcm_demo)
+#add_subdirectory(lcm_demo)
 add_subdirectory(yaml_include_demo)
 
 add_subdirectory(cmake_add_custom_command_demo)
@@ -52,6 +52,7 @@ add_subdirectory(cmake_add_custom_command_demo)
 add_subdirectory(stl_vector_demo)
 add_subdirectory(stl_iterator_adaptor_demo)
 add_subdirectory(dynamic_load)
+add_subdirectory(json_parser)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
