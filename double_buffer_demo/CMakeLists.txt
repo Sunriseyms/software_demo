@@ -1,0 +1,2 @@
+add_executable(double_buffer_demo main.cpp)
+target_link_libraries(double_buffer_demo pthread)

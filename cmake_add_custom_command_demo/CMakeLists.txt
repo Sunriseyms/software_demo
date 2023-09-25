@@ -1,6 +1,7 @@
 #file(GENERATED OUTPUT script_demo.sh INPUT test.sh) 
 set(Test "test")
-message("xxxxxxxxxxxxxxxxxxxxx:"${CMAKE_CURRENT_LIST_FILE})
+#message("xxxxxxxxxxxxxxxxxxxxx:"${CMAKE_CURRENT_LIST_FILE})
+
 add_custom_command(OUTPUT test_out
     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/test.sh ${Test}
 )

@@ -1,0 +1,2 @@
+add_executable(shared_ptr_mult_thread main.cpp)
+target_link_libraries(shared_ptr_mult_thread pthread)
