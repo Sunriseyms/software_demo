@@ -1,3 +1,4 @@
+add_compile_options(-fPIC)
 add_library(common SHARED common.cpp)
 add_library(a SHARED a.cpp)
 target_link_libraries(a common)

@@ -38,7 +38,7 @@ add_subdirectory(weak_symbol)
 
 add_subdirectory(preprocess_macro_demo)
 
-add_subdirectory(dlopen_demo)
+#add_subdirectory(dlopen_demo)
 
 add_subdirectory(inline_demo)
 
@@ -57,6 +57,7 @@ add_subdirectory(waitpid_demo)
 add_subdirectory(signal_demo)
 add_subdirectory(double_buffer_demo)
 add_subdirectory(shared_ptr_mult_thread)
+add_subdirectory(cgroup_demo)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
