@@ -1,0 +1,2 @@
+add_executable(condition_var_demo main.cpp)
+target_link_libraries(condition_var_demo PUBLIC pthread)

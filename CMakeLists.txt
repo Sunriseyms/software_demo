@@ -17,6 +17,7 @@ enable_testing()
 #add_definitions(-Wno-builtin-macro-redefined)
 #add_executable(extern_demo a.cpp src/extern_demo.cpp b.cpp)
 #redefine_file_macro(extern_demo)
+set(CMAKE_BUILD_TYPE Debug)
 
 add_subdirectory(file_demo)
 
@@ -58,6 +59,9 @@ add_subdirectory(signal_demo)
 add_subdirectory(double_buffer_demo)
 add_subdirectory(shared_ptr_mult_thread)
 add_subdirectory(cgroup_demo)
+add_subdirectory(epoll_demo)
+add_subdirectory(condition_variable_demo)
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

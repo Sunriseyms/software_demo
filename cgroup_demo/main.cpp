@@ -1,15 +1,26 @@
-#include <sys/syscall.h>
-#include <unistd.h>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <thread>
-#include <vector>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <thread>
+#include <vector>
+#include <unistd.h>
 
-std::string mem_sys_path_="/sys/fs/cgroup/memory";
+std::string mem_sys_path_ = "/sys/fs/cgroup/memory";
+
+long get_page_size() {
+  return sysconf(_SC_PAGESIZE);
+}
+
+std::string resize_limit_bite(const std::string& limit_bytes) {
+  long limit_size = std::stol(limit_bytes);
+  long real_limit_size = limit_size - (limit_size % get_page_size());
+  return std::to_string(real_limit_size);
+}
 
 bool is_mem_enable() {
   if (mem_sys_path_.empty()) {
@@ -27,18 +38,18 @@ bool is_mem_enable() {
 
   std::string test_group_memory_limit =
       test_group_dir + "/memory.limit_in_bytes";
-  std::string limit_bytes = "1024";
+  std::string limit_bytes = "400000";
 
   // write limit_bytes to
   // /sys/fs/cgroup/memory/test_group/memory.limit_in_bytes
-  FILE *file = fopen(test_group_memory_limit.c_str(), "w");
+  FILE* file = fopen(test_group_memory_limit.c_str(), "w");
   if (file == nullptr) {
     std::cout << "errno:" << errno << " errstr:" << strerror(errno)
               << std::endl;
     rmdir(test_group_dir.c_str());
     return false;
   }
-  (void)fprintf(file, "%s" ,limit_bytes.c_str());
+  (void)fprintf(file, "%s", limit_bytes.c_str());
   (void)fclose(file);
 
   // read /sys/fs/cgroup/memory/test_group/memory.limit_in_bytes
@@ -51,7 +62,8 @@ bool is_mem_enable() {
   }
   std::string acct_limit_bytes;
   (void)std::getline(read_file, acct_limit_bytes);
-  if (limit_bytes == acct_limit_bytes) {
+  std::cout << "limit_bytes:" << limit_bytes << " resize_limit_bite:" << resize_limit_bite(limit_bytes) << " acct_limit_bytes:" << acct_limit_bytes << std::endl;
+  if (resize_limit_bite(limit_bytes) == acct_limit_bytes) {
     rmdir(test_group_dir.c_str());
     return true;
   }
@@ -61,7 +73,7 @@ bool is_mem_enable() {
 }
 
 int main(int args, char** argv) {
-  /*
+  
   int thread_count = 0;
   try {
     thread_count = std::stoi(argv[1]);
@@ -79,24 +91,15 @@ int main(int args, char** argv) {
       }
     });
   }
-  */
-  /*
-          int i = 0;
-        int sum =0;
-        while (true) {
-          i++;
-          sum += i;
-          std::this_thread::sleep_for(std::chrono::microseconds(1));
-        }
-  */
-  /*
+  
+
     for (auto&& t : threads) {
       if (t.joinable()) {
         t.join();
       }
     }
-    */
-
+    
+   /*
   std::ifstream file("/proc/mounts");
   std::string line;
   bool cgroup_enabled = false;
@@ -109,10 +112,10 @@ int main(int args, char** argv) {
       std::vector<std::string> tokens;
       std::istringstream token_stream(line);
       std::string token;
-      while(std::getline(token_stream, token, ' ')) {
+      while (std::getline(token_stream, token, ' ')) {
         tokens.emplace_back(token);
       }
-      if(tokens.size() > 1) {
+      if (tokens.size() > 1) {
         path = tokens[1];
       }
       std::cout << "path:" << path << std::endl;
@@ -122,8 +125,8 @@ int main(int args, char** argv) {
     }
   }
 
-
-  std::cout << "is_mem_enable: " << is_mem_enable() << std::endl;;
+  std::cout << "is_mem_enable: " << is_mem_enable() << std::endl;
+  */
 
   return 0;
 }
