@@ -1,1 +1,2 @@
 add_executable(signal_demo main.cpp)
+target_link_libraries(signal_demo pthread)
