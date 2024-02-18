@@ -3,6 +3,8 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <signal.h>
+#include <unistd.h>
 
 void signal_handle1(int sig) {
   std::cout << "signal_handle1 sig:" << sig <<  " thread id:" << std::this_thread::get_id()<< std::endl;
@@ -33,7 +35,11 @@ void signal_handle3(int sig) {
   std::cout << "exit signal_handle3" << std::endl;
 }
 
-
+enum class HandleSignalStrategy {
+  kSignal = 0,
+  kSigaction = 1,
+  kSigWaitInfo = 2
+};
 
 int main(int argc, char** argv) {
   std::cout << "main thread id:" << std::this_thread::get_id() << std::endl;
@@ -43,8 +49,9 @@ int main(int argc, char** argv) {
     thread_num = std::stoi(argv[1]);
   }
 
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  HandleSignalStrategy handle_signal_strategy = HandleSignalStrategy::kSignal;
 
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   std::cout << "signal SIGINT with signal_handle1" << std::endl;
   std::signal(SIGINT, signal_handle1);
   char i;
@@ -55,7 +62,7 @@ int main(int argc, char** argv) {
   std::cout << "signal SIGTERM with signal_handle3" << std::endl;
   std::signal(SIGTERM, signal_handle3);
 
-    std::vector<std::thread> child_threads;
+  std::vector<std::thread> child_threads;
   int child_thread_num = thread_num - 1;
   child_threads.reserve(child_thread_num);
   for (int i = 0; i < child_thread_num; i++) {
